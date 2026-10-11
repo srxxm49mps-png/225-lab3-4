@@ -21,13 +21,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: minterjt-prod-service
+  name: minterjt-lab34-prod-service
+  annotations:
+    metallb.universe.tf/address-pool: minterjt-production
 spec:
   type: LoadBalancer
-  loadBalancerIP: PRODUCTION_IP                                     # <-----change this to match your load balancer IP!!!!
+  loadBalancerIP: 10.48.229.166                                     # <-----change this to match your load balancer IP!!!!
   ports:
   - protocol: TCP
-    port: 80
+    port: 8080
     targetPort: 80
   selector:
     app: minterjt-lab34-prod
