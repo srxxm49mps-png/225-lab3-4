@@ -11,7 +11,7 @@ pipeline {
 
     parameters {
         string(name: 'PRODUCTION_IP', defaultValue: '', description: 'Course-assigned MetalLB IP; required for production deployment')
-        booleanParam(name: 'VERIFY_DEV_ONLY', defaultValue: false, description: 'Verify DEV while production IP assignment is unresolved')
+        booleanParam(name: 'VERIFY_DEV_ONLY', defaultValue: true, description: 'Verify DEV while production IP assignment is unresolved')
     }
 
     stages {
