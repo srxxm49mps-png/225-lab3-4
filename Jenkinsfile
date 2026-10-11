@@ -97,11 +97,11 @@ pipeline {
         }
 
         unstable {
-            slackSend color: "warning", message: "Build Completed: ${env.JOB_NAME} ${env.BUILD_NUMBER} (DEV-only: ${params.VERIFY_DEV_ONLY})"
+            slackSend color: "warning", message: "Build Unstable: ${env.JOB_NAME} ${env.BUILD_NUMBER} (DEV-only: ${params.VERIFY_DEV_ONLY})"
         }
 
         failure {
-            slackSend color: "danger", message: "Build Completed: ${env.JOB_NAME} ${env.BUILD_NUMBER} (DEV-only: ${params.VERIFY_DEV_ONLY})"
+            slackSend color: "danger", message: "Build Failed: ${env.JOB_NAME} ${env.BUILD_NUMBER} (DEV-only: ${params.VERIFY_DEV_ONLY})"
         }
     }
 }
