@@ -13,7 +13,7 @@ spec:
         app: minterjt-lab34-prod
     spec:
       containers:
-      - name: minterjt-lab34-prod-ingress
+      - name: nginx
         image: cithit/minterjt:latest                              #<-------change this to match your MiamiID.
         ports:
         - containerPort: 80  # Expose NGINX on port 80      

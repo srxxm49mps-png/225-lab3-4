@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: minterjt-lab34-dev
 spec:
-  replicas: 1  # Number of NGINX pods to run
+  replicas: 1
   selector:
     matchLabels:
       app: minterjt-lab34-dev
@@ -13,23 +13,25 @@ spec:
         app: minterjt-lab34-dev
     spec:
       containers:
-      - name: minterjt-lab34-dev-ingress
-        image: cithit/minterjt:latest   #<-------change this to match your MiamiID.
+      - name: nginx
+        image: cithit/minterjt:latest
         ports:
-        - containerPort: 80  # Expose NGINX on port 80      
+        - containerPort: 80
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: nginx
+  name: minterjt-lab34-dev-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
-  rules: 
-  - host: 
-    http:
+  rules:
+  - http:
       paths:
       - path: /lab3-4(/|$)(.*)
         pathType: ImplementationSpecific
-        backend: 
+        backend:
           service:
             name: minterjt-lab34-dev-service
             port:
@@ -45,4 +47,4 @@ spec:
     port: 80
     targetPort: 80
   selector:
-    app: minterjt-lab34-dev 
+    app: minterjt-lab34-dev
