@@ -1,8 +1,8 @@
 pipeline {
-    agent any 
+    agent any
 
     environment {
-        DOCKER_CREDENTIALS_ID = 'roseaw-dockerhub'  
+        DOCKER_CREDENTIALS_ID = 'roseaw-dockerhub'
         DOCKER_IMAGE = 'cithit/minterjt'                               //<-----change this to your MiamiID!
         IMAGE_TAG = "lab34-build-${BUILD_NUMBER}"
         GITHUB_URL = 'https://github.com/srxxm49mps-png/225-lab3-4.git' //<-----change this to match this new repository!
@@ -95,11 +95,11 @@ pipeline {
         success {
             slackSend color: "good", message: "Build Completed: ${env.JOB_NAME} ${env.BUILD_NUMBER} (DEV-only: ${params.VERIFY_DEV_ONLY})"
         }
-            
+
         unstable {
             slackSend color: "warning", message: "Build Completed: ${env.JOB_NAME} ${env.BUILD_NUMBER} (DEV-only: ${params.VERIFY_DEV_ONLY})"
         }
-            
+
         failure {
             slackSend color: "danger", message: "Build Completed: ${env.JOB_NAME} ${env.BUILD_NUMBER} (DEV-only: ${params.VERIFY_DEV_ONLY})"
         }
