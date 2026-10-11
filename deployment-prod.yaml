@@ -24,6 +24,7 @@ metadata:
   name: minterjt-lab34-prod-service
   annotations:
     metallb.universe.tf/address-pool: minterjt-production
+    metallb.universe.tf/allow-shared-ip: minterjt-labs
 spec:
   type: LoadBalancer
   loadBalancerIP: 10.48.229.166                                     # <-----change this to match your load balancer IP!!!!
